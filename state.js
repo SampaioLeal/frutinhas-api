@@ -3,6 +3,7 @@ class State {
   fruits = [];
   online = 0;
 
+  // State management logic
   addFruit(fruit) {
     this.fruits.push(fruit);
   }
@@ -48,6 +49,8 @@ class State {
   removePlayer(playerID) {
     this.players.splice(this.findByID(playerID), 1);
   }
+
+  // This is "GAMBIARRA FEELS"
   async movePlayer(direction, playerID) {
     const player = await this.players[this.findByID(playerID)];
     if (player) {
@@ -112,6 +115,10 @@ class State {
             break;
         }
       }
+      // if you made it this far consider yourself a warrior
+      // i know that this isn't the best practice of the year, but it works ;)
+
+      // This is for player dimension management
       if (player.y === 20 && player.level === 1) {
         player.level = 3;
         player.z -= 1;
