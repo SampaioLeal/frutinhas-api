@@ -20,7 +20,7 @@ const colors = [
   "#16a750",
   "#40a716",
   "#ffeb3b",
-  "#f17c18"
+  "#f17c18",
 ];
 
 function notifyAll() {
@@ -39,7 +39,7 @@ function addFruits() {
     let fruit = {
       x: Math.round(Math.random() * 19),
       y: Math.round(Math.random() * 19),
-      z: -0.5
+      z: -0.5,
     };
     if (hasFruit(fruit.x, fruit.y, fruit.z)) {
       addFruits();
@@ -53,7 +53,7 @@ function addFruits() {
     let fruit = {
       x: 19.5,
       y: Math.round(Math.random() * 19),
-      z: Math.round(Math.random() * -19) - 1
+      z: Math.round(Math.random() * -19) - 1,
     };
     if (hasFruit(fruit.x, fruit.y, fruit.z)) {
       addFruits();
@@ -67,7 +67,7 @@ function addFruits() {
     let fruit = {
       x: Math.round(Math.random() * 19),
       y: 19.5,
-      z: Math.round(Math.random() * -19) - 1
+      z: Math.round(Math.random() * -19) - 1,
     };
     if (hasFruit(fruit.x, fruit.y, fruit.z)) {
       addFruits();
@@ -84,7 +84,7 @@ function addFruits() {
 // Check if already exists a fruit in the respective coords
 function hasFruit(x, y, z) {
   let result = false;
-  state.fruits.map(fruit => {
+  state.fruits.map((fruit) => {
     if (fruit.x === x && fruit.y === y && fruit.z === z) {
       result = true;
     }
@@ -126,7 +126,8 @@ async function checkCollision(playerID, notifyCollision) {
 }
 
 // Socket logics
-io.on("connection", function(socket) {
+io.origins(["https://sampaioleal.github.io"]);
+io.on("connection", function (socket) {
   // This needs to be outside the socket logics
   function notifyCollision() {
     socket.emit("collision");
@@ -141,7 +142,7 @@ io.on("connection", function(socket) {
     notifyAll();
   });
 
-  socket.on("movePlayer", async direction => {
+  socket.on("movePlayer", async (direction) => {
     await state.movePlayer(direction, socket.id);
     checkCollision(socket.id, notifyCollision);
     notifyAll();
