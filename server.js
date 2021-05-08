@@ -4,7 +4,7 @@ const cron = require("node-cron");
 
 const state = require("./state");
 
-app.listen(3001);
+app.listen(3000);
 
 // Colors that will be used to define the cube color for each player
 const colors = [
