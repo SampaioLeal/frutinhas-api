@@ -1,5 +1,5 @@
 const app = require("http").createServer();
-const io = require("socket.io")(app, { path: "/frutinhas/socket.io" });
+const io = require("socket.io")(app);
 const cron = require("node-cron");
 
 const state = require("./state");
