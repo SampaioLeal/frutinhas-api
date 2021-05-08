@@ -1,5 +1,9 @@
 const app = require("http").createServer();
-const io = require("socket.io")(app);
+const io = require("socket.io")(app, {
+  cors: {
+    origin: "https://sampaioleal.github.io",
+  },
+});
 const cron = require("node-cron");
 
 const state = require("./state");
