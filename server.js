@@ -130,14 +130,11 @@ async function checkCollision(playerID, notifyCollision) {
 }
 
 // Socket logics
-io.origins(["https://sampaioleal.github.io"]);
 io.on("connection", function (socket) {
   // This needs to be outside the socket logics
   function notifyCollision() {
     socket.emit("collision");
   }
-
-  console.log("New connection:", socket.id);
 
   socket.emit("welcome", state);
 
